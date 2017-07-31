@@ -23,7 +23,8 @@
     self.price.text =  [NSString stringWithFormat:@"€%@", offer.price_in_euros];
     self.duration.text = offer.duration;
     if (offer.number_of_stops.integerValue > 0) {
-        self.numberOfStops.text = [NSString stringWithFormat:@"%@ stops", offer.number_of_stops];
+        NSString* stopsString = (offer.number_of_stops.integerValue > 1 ? @"stops" : @"stop");
+        self.numberOfStops.text = [NSString stringWithFormat:@"%@ %@", offer.number_of_stops, stopsString];
     } else {
         self.numberOfStops.text = @"Direct";
     }
