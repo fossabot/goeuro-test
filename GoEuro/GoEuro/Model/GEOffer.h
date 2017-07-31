@@ -17,5 +17,7 @@
 @property (nonatomic, strong, readonly) NSString* departure_time;
 @property (nonatomic, strong, readonly) NSString* arrival_time;
 @property (nonatomic, strong, readonly) NSString* number_of_stops;
+@property (nonatomic, strong, readonly) NSString* duration;
+@property (nonatomic, assign, readonly) BOOL nextDay;
 
 @end

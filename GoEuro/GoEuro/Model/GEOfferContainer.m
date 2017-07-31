@@ -21,8 +21,7 @@ NSString* const kGEUpdateCompleteNotification = @"kGEUpdateCompleteNotification"
 
 @implementation GEOfferContainer
 
-- (instancetype)initWithType:(GEOfferType)type
-{
+- (instancetype)initWithType:(GEOfferType)type {
     self = [super init];
     if (self) {
         _type = type;
@@ -53,11 +52,9 @@ NSString* const kGEUpdateCompleteNotification = @"kGEUpdateCompleteNotification"
         default:
             break;
     }
-
 }
 
-- (void)fillObjectsWithArray:(NSArray*)array
-{
+- (void)fillObjectsWithArray:(NSArray*)array {
     NSMutableArray* tmpArray = [NSMutableArray new];
     for (NSDictionary* dict in array) {
         GEOffer* offer = [[GEOffer alloc] initWithDictionary:dict];
