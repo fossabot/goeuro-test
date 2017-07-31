@@ -37,6 +37,7 @@ static NSString* const kGEPlaneApiPath = @"w60i";
     if (self) {
         NSURL* url = [NSURL URLWithString:kGEAPIURLString];
         NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        config.requestCachePolicy = NSURLRequestReturnCacheDataElseLoad;
         _sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:url sessionConfiguration:config];
     }
     return self;
