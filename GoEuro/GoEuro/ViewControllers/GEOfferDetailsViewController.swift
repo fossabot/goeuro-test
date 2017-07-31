@@ -10,8 +10,10 @@ import UIKit
 
 class GEOfferDetailsViewController: UIViewController {
 
+    @IBOutlet weak var contentView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.contentView.layer.cornerRadius = 8.0
     }
 
     @IBAction func tapAction(_ sender: Any) {
