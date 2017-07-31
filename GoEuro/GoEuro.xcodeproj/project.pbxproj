@@ -13,8 +13,12 @@
 		0A12BC6D1F2E858B0023318A /* GEOfferContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A12BC6C1F2E858B0023318A /* GEOfferContainer.m */; };
 		0A12BC711F2E86B40023318A /* GERequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A12BC701F2E86B40023318A /* GERequestManager.m */; };
 		0A12BC791F2EA7DC0023318A /* GEOfferCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A12BC781F2EA7DC0023318A /* GEOfferCell.m */; };
+		0A2219741F2F8E8000DA7988 /* GEOfferDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2219731F2F8E8000DA7988 /* GEOfferDetailsViewController.swift */; };
 		0A4545D01F2E7B85009B8685 /* GETransitTableControllerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4545CF1F2E7B85009B8685 /* GETransitTableControllerTableViewController.swift */; };
 		0A4545D21F2E7C5A009B8685 /* GETransportSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4545D11F2E7C5A009B8685 /* GETransportSelectViewController.swift */; };
+		0A6B9E291F2F74D000944AA7 /* GESortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6B9E281F2F74D000944AA7 /* GESortViewController.swift */; };
+		0AAB41101F2F6843000046DF /* GEDirectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAB410F1F2F6843000046DF /* GEDirectionViewController.swift */; };
+		0AAB41131F2F6A1A000046DF /* GEDirection.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AAB41121F2F6A1A000046DF /* GEDirection.m */; };
 		0AB510481F2E70350025B589 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB510471F2E70350025B589 /* main.m */; };
 		0AB5104B1F2E70350025B589 /* GEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AB5104A1F2E70350025B589 /* GEAppDelegate.m */; };
 		0AB510511F2E70350025B589 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AB5104F1F2E70350025B589 /* Main.storyboard */; };
@@ -36,9 +40,15 @@
 		0A12BC721F2EA0040023318A /* NSObject+GESafeKVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+GESafeKVC.h"; sourceTree = "<group>"; };
 		0A12BC771F2EA7DC0023318A /* GEOfferCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEOfferCell.h; sourceTree = "<group>"; };
 		0A12BC781F2EA7DC0023318A /* GEOfferCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GEOfferCell.m; sourceTree = "<group>"; };
+		0A2219731F2F8E8000DA7988 /* GEOfferDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GEOfferDetailsViewController.swift; sourceTree = "<group>"; };
 		0A4545CE1F2E7B85009B8685 /* GoEuro-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GoEuro-Bridging-Header.h"; path = "ViewControllers/GoEuro-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A4545CF1F2E7B85009B8685 /* GETransitTableControllerTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GETransitTableControllerTableViewController.swift; sourceTree = "<group>"; };
 		0A4545D11F2E7C5A009B8685 /* GETransportSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GETransportSelectViewController.swift; sourceTree = "<group>"; };
+		0A6B9E281F2F74D000944AA7 /* GESortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GESortViewController.swift; sourceTree = "<group>"; };
+		0AAB410E1F2F66B2000046DF /* GEOfferType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEOfferType.h; sourceTree = "<group>"; };
+		0AAB410F1F2F6843000046DF /* GEDirectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GEDirectionViewController.swift; sourceTree = "<group>"; };
+		0AAB41111F2F6A1A000046DF /* GEDirection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEDirection.h; sourceTree = "<group>"; };
+		0AAB41121F2F6A1A000046DF /* GEDirection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GEDirection.m; sourceTree = "<group>"; };
 		0AB510431F2E70350025B589 /* GoEuro.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoEuro.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB510471F2E70350025B589 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0AB510491F2E70350025B589 /* GEAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GEAppDelegate.h; sourceTree = "<group>"; };
@@ -105,6 +115,9 @@
 			children = (
 				0A4545CF1F2E7B85009B8685 /* GETransitTableControllerTableViewController.swift */,
 				0A4545D11F2E7C5A009B8685 /* GETransportSelectViewController.swift */,
+				0AAB410F1F2F6843000046DF /* GEDirectionViewController.swift */,
+				0A6B9E281F2F74D000944AA7 /* GESortViewController.swift */,
+				0A2219731F2F8E8000DA7988 /* GEOfferDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -116,6 +129,9 @@
 				0A12BC651F2E838C0023318A /* GEOffer.m */,
 				0A12BC6B1F2E858B0023318A /* GEOfferContainer.h */,
 				0A12BC6C1F2E858B0023318A /* GEOfferContainer.m */,
+				0AAB410E1F2F66B2000046DF /* GEOfferType.h */,
+				0AAB41111F2F6A1A000046DF /* GEDirection.h */,
+				0AAB41121F2F6A1A000046DF /* GEDirection.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -311,12 +327,16 @@
 			files = (
 				0A12BC791F2EA7DC0023318A /* GEOfferCell.m in Sources */,
 				0A12BC661F2E838C0023318A /* GEOffer.m in Sources */,
+				0AAB41101F2F6843000046DF /* GEDirectionViewController.swift in Sources */,
 				0A12BC711F2E86B40023318A /* GERequestManager.m in Sources */,
+				0A2219741F2F8E8000DA7988 /* GEOfferDetailsViewController.swift in Sources */,
 				0A4545D21F2E7C5A009B8685 /* GETransportSelectViewController.swift in Sources */,
 				0AB5104B1F2E70350025B589 /* GEAppDelegate.m in Sources */,
 				0A12BC6A1F2E84260023318A /* NSObject+GESafeKVC.m in Sources */,
 				0A4545D01F2E7B85009B8685 /* GETransitTableControllerTableViewController.swift in Sources */,
+				0A6B9E291F2F74D000944AA7 /* GESortViewController.swift in Sources */,
 				0A12BC631F2E83120023318A /* GEOffersDataSource.m in Sources */,
+				0AAB41131F2F6A1A000046DF /* GEDirection.m in Sources */,
 				0A12BC6D1F2E858B0023318A /* GEOfferContainer.m in Sources */,
 				0AB510481F2E70350025B589 /* main.m in Sources */,
 			);

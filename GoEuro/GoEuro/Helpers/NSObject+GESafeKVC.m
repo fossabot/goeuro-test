@@ -10,8 +10,7 @@
 
 @implementation NSObject (GESafeKVC)
 
-- (void)setIfExistsValuesForKeysWithDictionary:(NSDictionary*)dictionary
-{
+- (void)setIfExistsValuesForKeysWithDictionary:(NSDictionary*)dictionary {
     NSArray* keys = dictionary.allKeys;
     for (NSString* key in keys)
     {

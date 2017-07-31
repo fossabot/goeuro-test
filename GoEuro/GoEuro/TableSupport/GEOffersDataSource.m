@@ -9,6 +9,7 @@
 #import "GEOffersDataSource.h"
 #import "GEOfferContainer.h"
 #import "GEOfferCell.h"
+#import "GEOffer.h"
 
 static NSString* const kGECellIdentifier = @"OfferCell";
 
@@ -19,19 +20,21 @@ static NSString* const kGECellIdentifier = @"OfferCell";
 @property (nonatomic, strong) GEOfferContainer* planeContainer;
 @property (nonatomic, weak) GEOfferContainer* current;
 @property (nonatomic, weak) UITableView* tableView;
+@property (nonatomic, strong) NSSortDescriptor* sortDescriptor;
+@property (nonatomic, strong) NSArray* sortedArray;
 
 @end
 
 @implementation GEOffersDataSource
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         _busContainer = [[GEOfferContainer alloc] initWithType:GEOfferTypeBus];
         _planeContainer = [[GEOfferContainer alloc] initWithType:GEOfferTypePlane];
         _trainContainer = [[GEOfferContainer alloc] initWithType:GEOfferTypeTrain];
-        _current = _busContainer;
+        _sortedArray = @[];
+        _sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"duration" ascending:YES selector:@selector(localizedStandardCompare:)];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(containerUpdate:) name:kGEUpdateCompleteNotification object:nil];
     }
     return self;
@@ -43,17 +46,22 @@ static NSString* const kGECellIdentifier = @"OfferCell";
 
 - (void)containerUpdate:(NSNotification*)note {
     if (note.object == _current) {
-        [_tableView reloadData];
-        _tableView = nil;
+        [self refresh];
     }
 }
 
-- (void)selectSection:(NSInteger)index table:(UITableView*)table{
-    switch (index) {
-        case 0:
+- (void)refresh {
+    _sortedArray = [_current.objects sortedArrayUsingDescriptors:@[self.sortDescriptor]];
+    //[_tableView reloadData];
+    [_tableView reloadSections:[NSIndexSet indexSetWithIndex:0] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)selectOfferType:(GEOfferType)type table:(UITableView*)table;{
+    switch (type) {
+        case GEOfferTypeBus:
             self.current = _busContainer;
             break;
-        case 1:
+        case GEOfferTypePlane:
             self.current = _planeContainer;
             break;
 
@@ -73,13 +81,35 @@ static NSString* const kGECellIdentifier = @"OfferCell";
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     GEOfferCell* cell = [tableView dequeueReusableCellWithIdentifier:kGECellIdentifier];
-    GEOffer* offer = _current.objects[indexPath.row];
+    GEOffer* offer = _sortedArray[indexPath.row];
     [cell fillWithOffer:offer];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _current.objects.count;
+    return _sortedArray.count;
 }
+
+- (void)sortWithDescriptor:(NSSortDescriptor*)descriptor {
+    self.sortDescriptor = descriptor;
+    [self refresh];
+}
+
+- (void)sortByDuration {
+    NSSortDescriptor* descriptor = [[NSSortDescriptor alloc] initWithKey:@"duration" ascending:YES selector:@selector(localizedStandardCompare:)];
+    [self sortWithDescriptor:descriptor];
+}
+
+- (void)sortByArrival {
+    NSSortDescriptor* descriptor = [[NSSortDescriptor alloc] initWithKey:@"arrival_time" ascending:YES selector:@selector(localizedStandardCompare:)];
+    [self sortWithDescriptor:descriptor];
+}
+
+- (void)sortByDeparture {
+    NSSortDescriptor* descriptor = [[NSSortDescriptor alloc] initWithKey:@"departure_time" ascending:YES selector:@selector(localizedStandardCompare:)];
+    [self sortWithDescriptor:descriptor];
+}
+
 
 @end

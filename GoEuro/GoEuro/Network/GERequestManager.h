@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef void (^GERequestCompletionBlock)(NSURLSessionDataTask* _Nullable task, id _Nullable responseObject, NSError* _Nullable error);
 
 @interface GERequestManager : NSObject
@@ -18,3 +20,5 @@ typedef void (^GERequestCompletionBlock)(NSURLSessionDataTask* _Nullable task, i
 - (NSURLSessionDataTask* _Nonnull)requestPlaneOffersWithCompletion:(GERequestCompletionBlock)completion;
 
 @end
+
+NS_ASSUME_NONNULL_END

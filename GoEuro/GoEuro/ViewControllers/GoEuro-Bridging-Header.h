@@ -3,3 +3,5 @@
 //
 
 #import "GEOffersDataSource.h"
+#import "GEOfferType.h"
+#import "GEDirection.h"

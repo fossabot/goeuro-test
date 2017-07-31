@@ -8,22 +8,68 @@
 
 import UIKit
 
-class GETransportSelectViewController: UIViewController {
+extension UIScrollView {
+    func scrollToTop(animated: Bool) {
+        let desiredOffset = CGPoint(x: 0, y: -contentInset.top)
+        setContentOffset(desiredOffset, animated: animated)
+    }
+}
 
-    private static let kEmbedSegue = "embedTable"
-    private let offerDataSource = GEOffersDataSource()
-    private var transitTableViewController: GETransitTableViewController!
+class GETransportSelectViewController: UIViewController, UIPopoverPresentationControllerDelegate, GESortViewControllerDelegate  {
 
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    let segmentTransitMap: [Int: GEOfferType] = [ 0 : .train, 1: .bus, 2: .plane]
+
+    private static let embedSegue = "embedTable"
+    private static let popoverSegue = "popoverSegue"
+    private let offerDataSource = GEOffersDataSource()
+    private var transitTableViewController: GETransitTableViewController!
+    private var sortType: SortType?
     
     @IBAction func tabChangedAction(_ sender: UISegmentedControl) {
-        self.offerDataSource.selectSection(sender.selectedSegmentIndex, table: self.transitTableViewController.tableView)
+         self.select(segment: sender.selectedSegmentIndex)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == GETransportSelectViewController.kEmbedSegue {
+        if segue.identifier == GETransportSelectViewController.embedSegue {
             transitTableViewController = (segue.destination as! GETransitTableViewController)
             transitTableViewController.tableView.dataSource = offerDataSource;
+            self.select(segment: segmentedControl.selectedSegmentIndex);
+        } else if segue.identifier == GETransportSelectViewController.popoverSegue {
+            let popoverViewController = segue.destination as! GESortViewController
+            popoverViewController.modalPresentationStyle = UIModalPresentationStyle.popover
+            popoverViewController.popoverPresentationController!.delegate = self
+            popoverViewController.delegate = self
+            if let sort = sortType {
+                popoverViewController.select(type: sort)
+            }
         }
+    }
+
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
+    }
+
+    private func select(segment: Int) {
+        guard let type = segmentTransitMap[segment]
+            else { return }
+        self.transitTableViewController.tableView.scrollToTop(animated: false)
+        self.offerDataSource.select(type, table: self.transitTableViewController.tableView)
+    }
+
+    func controller(controller: GESortViewController, didPick sort: SortType) {
+        switch sort {
+        case .arrivalTime:
+            self.offerDataSource.sortByArrival()
+            break
+        case .departure:
+            self.offerDataSource.sortByDeparture()
+            break;
+        default:
+            self.offerDataSource.sortByDuration()
+            break
+        }
+        sortType = sort
+        self.dismiss(animated: true, completion: nil)
     }
 }

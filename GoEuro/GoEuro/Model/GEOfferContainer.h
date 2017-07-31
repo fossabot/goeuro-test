@@ -7,12 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
-typedef NS_ENUM(NSUInteger, GEOfferType) {
-    GEOfferTypeBus,
-    GEOfferTypeTrain,
-    GEOfferTypePlane,
-};
+#import "GEOfferType.h"
 
 extern NSString* const kGEUpdateCompleteNotification;
 

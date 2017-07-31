@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "GEOfferContainer.h"
 
 @interface GEOffersDataSource : NSObject <UITableViewDataSource>
 
-- (void)selectSection:(NSInteger)index table:(UITableView*)table;
+- (void)selectOfferType:(GEOfferType)type table:(UITableView*)table;
+- (void)sortByArrival;
+- (void)sortByDuration;
+- (void)sortByDeparture;
 
 @end
