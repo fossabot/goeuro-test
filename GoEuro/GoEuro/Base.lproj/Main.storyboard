@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="17A315i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qct-22-tKm">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Qct-22-tKm">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -51,58 +51,64 @@
             </objects>
             <point key="canvasLocation" x="573.60000000000002" y="152.47376311844079"/>
         </scene>
-        <!--View Controller-->
+        <!--Transport Select View Controller-->
         <scene sceneID="WOf-it-wmD">
             <objects>
-                <viewController id="h4Z-ce-5Py" sceneMemberID="viewController">
+                <viewController id="h4Z-ce-5Py" customClass="GETransportSelectViewController" customModule="GoEuro" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HQy-Fs-87J"/>
+                        <viewControllerLayoutGuide type="bottom" id="FB0-2v-MDA"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vOs-KJ-W2b">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="595"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="hiY-41-dQO">
                                 <rect key="frame" x="36" y="13" width="302" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="Train"/>
-                                    <segment title="Second"/>
+                                    <segment title="Bus"/>
                                     <segment title="Flight"/>
                                 </segments>
+                                <connections>
+                                    <action selector="tabChangedAction:" destination="h4Z-ce-5Py" eventType="valueChanged" id="kfn-oA-bYN"/>
+                                </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E9T-p6-dGx">
                                 <rect key="frame" x="0.0" y="57" width="375" height="538"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="WRm-di-wXV" kind="embed" id="JB8-ny-XJs"/>
+                                    <segue destination="WRm-di-wXV" kind="embed" identifier="embedTable" id="JB8-ny-XJs"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="segmentedControl" destination="hiY-41-dQO" id="q5b-gx-hCY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="agg-AO-Xo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1412" y="151.57421289355324"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Transit Table View Controller-->
         <scene sceneID="LJh-29-uzx">
             <objects>
-                <tableViewController id="WRm-di-wXV" sceneMemberID="viewController">
+                <tableViewController id="WRm-di-wXV" customClass="GETransitTableViewController" customModule="GoEuro" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="f2o-q1-x0g">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="538"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="80" id="fMC-yP-uql">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="OfferCell" rowHeight="80" id="fMC-yP-uql" customClass="GEOfferCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fMC-yP-uql" id="1aU-8T-c9b">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMb-hj-ciY">
-                                            <rect key="frame" x="0.0" y="0.0" width="133" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="17:00 - 23:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctg-ZY-Pbg">
                                             <rect key="frame" x="12" y="42" width="104" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -131,8 +137,19 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sMb-hj-ciY">
+                                            <rect key="frame" x="12" y="0.0" width="133" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="departureArrivalLabel" destination="ctg-ZY-Pbg" id="2b2-V8-eJn"/>
+                                    <outlet property="duration" destination="F3H-xS-Gt5" id="Xry-C9-4WJ"/>
+                                    <outlet property="numberOfStops" destination="nHT-zR-4sh" id="NSU-od-rui"/>
+                                    <outlet property="price" destination="hPC-y1-vup" id="t6H-oN-1IW"/>
+                                    <outlet property="providerLogo" destination="sMb-hj-ciY" id="X4Z-ep-tOS"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

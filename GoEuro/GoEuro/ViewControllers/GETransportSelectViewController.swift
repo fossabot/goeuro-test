@@ -10,26 +10,20 @@ import UIKit
 
 class GETransportSelectViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    private static let kEmbedSegue = "embedTable"
+    private let offerDataSource = GEOffersDataSource()
+    private var transitTableViewController: GETransitTableViewController!
 
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func tabChangedAction(_ sender: UISegmentedControl) {
+        self.offerDataSource.selectSection(sender.selectedSegmentIndex, table: self.transitTableViewController.tableView)
     }
-    */
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == GETransportSelectViewController.kEmbedSegue {
+            transitTableViewController = (segue.destination as! GETransitTableViewController)
+            transitTableViewController.tableView.dataSource = offerDataSource;
+        }
+    }
 }

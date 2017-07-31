@@ -7,6 +7,7 @@
 //
 
 #import "GEOfferCell.h"
+#import "GEOffer.h"
 
 @implementation GEOfferCell
 
@@ -19,6 +20,11 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+
+- (void)fillWithOffer:(GEOffer*)offer {
+    self.departureArrivalLabel.text = [NSString stringWithFormat:@"%@ - %@", offer.departure_time, offer.arrival_time];
+    self.price.text =  [NSString stringWithFormat:@"€ %@", offer.price_in_euros];
 }
 
 @end

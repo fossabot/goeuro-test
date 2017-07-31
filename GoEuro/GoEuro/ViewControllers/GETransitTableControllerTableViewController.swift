@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GETransitTableControllerTableViewController: UITableViewController {
+class GETransitTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
