@@ -37,6 +37,12 @@ static NSString* const kGEPlaneApiPath = @"w60i";
     if (self) {
         NSURL* url = [NSURL URLWithString:kGEAPIURLString];
         NSURLSessionConfiguration* config = [NSURLSessionConfiguration defaultSessionConfiguration];
+        // The next line of code was done by intent, and it's not completely correct.
+        // In the real case I'd use "NSURLRequestUseProtocolCachePolicy" to make it behave correctly offline.
+        // I'd creata custom NSURLProtocol subclass and implement custom caching logic inside.
+        // If the app has a networc connectivity, NSURLProtocol would send a request to the server,
+        // if no, it would return a cached response.
+        // P.S. And we can always use CoreData to cache. But not in the test task :)
         config.requestCachePolicy = NSURLRequestReturnCacheDataElseLoad;
         _sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:url sessionConfiguration:config];
     }
