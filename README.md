@@ -1,4 +1,6 @@
 # GoEuro Test App
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fbomjkolyadun%2Fgoeuro-test.svg?type=shield)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fbomjkolyadun%2Fgoeuro-test?ref=badge_shield)
+
 
 This is an implementation of [GoEuro Test App](https://github.com/goeuro/iOS-Test)
 
@@ -17,3 +19,7 @@ This is an implementation of [GoEuro Test App](https://github.com/goeuro/iOS-Tes
 
 ## Third-Party Libs
 - AFNetworking – to simplify client-server interactions.
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fbomjkolyadun%2Fgoeuro-test.svg?type=large)](https://app.fossa.io/projects/git%2Bhttps%3A%2F%2Fgithub.com%2Fbomjkolyadun%2Fgoeuro-test?ref=badge_large)
